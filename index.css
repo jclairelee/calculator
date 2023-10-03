@@ -1,0 +1,82 @@
+.calc {
+  background-color: #e9edc9;
+  border-radius: 40px;
+  width: 350px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+.display {
+  display: flex;
+  height: 200px;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+.display .operator {
+  color: #eb6666;
+}
+
+.display .brackets,
+.display .percent {
+  color: #207e5c;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-right: 1.5rem;
+}
+.input {
+  font-size: 1.75rem;
+}
+.output {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+.operator {
+  color: red;
+}
+.math {
+  display: flex;
+  background-color: #d4a373;
+  height: 400px;
+  width: 350px;
+  border-radius: 20px;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+.keys {
+  display: flex;
+  width: 350px;
+  flex-wrap: wrap;
+  gap: 1rem;
+  transform: translateX(-1rem);
+}
+.keys-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 4rem;
+  list-style-type: none;
+  font-size: 2rem;
+  background-color: #e9edc9;
+  border-radius: 16px;
+  color: #344e41;
+}
+
+.keys li:nth-child(1),
+.keys li:nth-child(2),
+.keys li:nth-child(3),
+.keys li:nth-child(4),
+.keys li:nth-child(8),
+.keys li:nth-child(12),
+.keys li:nth-child(16),
+.keys li:nth-child(17),
+.keys li:nth-child(19),
+.keys li:nth-child(20) {
+  background-color: #dad7cd;
+}
+
+.keys-btn .keys-btn:hover {
+  cursor: pointer;
+  box-shadow: inset 0px0px 8px rgba(0, 0, 0, 0.2);
+}

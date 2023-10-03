@@ -17,7 +17,7 @@ for (let key of keys) {
       display_input.innerHTML = organizeInput(input);
     } else if (value === "=") {
       let result = eval(PerpareInput(input));
-      display_output.innerHTML = organizeInput(input);
+      display_output.innerHTML = organizeOutput(result);
     } else if (value === "brackets") {
       if (
         !input.includes("(") ||
@@ -37,16 +37,19 @@ for (let key of keys) {
       }
       display_input.innerHTML = organizeInput(input);
     } else {
-      input += value;
-      display_input.innerHTML = organizeInput(input);
+      if (ValidateInput(value)) {
+        input += value;
+        display_input.innerHTML = organizeInput(input);
+      }
     }
   });
 }
 
 const organizeInput = (input) => {
   let input_arr = input.split("");
-  let input_arr_length = input_arr.length;
-  for (let i = 0; i < input_arr_length; i++) {
+  let input_leng = input_arr.length;
+
+  for (let i = 0; i < input_leng; i++) {
     if (input_arr[i] == "*") {
       input_arr[i] = ` <span class="operator">x</span> `;
     } else if (input_arr[i] == "/") {
@@ -65,3 +68,55 @@ const organizeInput = (input) => {
   }
   return input_arr.join("");
 };
+
+const organizeOutput = (output) => {
+  let output_string = output.toString();
+  let decimal = output_string.split(".")[1];
+  output_string = output_string.split(".")[0];
+
+  let output_arr = output_string.split("");
+
+  if (output_arr.length > 3) {
+    for (let i = output_arr.length - 3; i > 0; i -= 3) {
+      output_arr.splice(i, 0, ",");
+    }
+  }
+
+  if (decimal) {
+    output_arr.push(".");
+    output_arr.push(decimal);
+  }
+
+  return output_arr.join("");
+};
+
+function ValidateInput(value) {
+  let last_input = input.slice(-1);
+  let operators = ["+", "-", "*", "/"];
+
+  if (value == "." && last_input == ".") {
+    return false;
+  }
+
+  if (operators.includes(value)) {
+    if (operators.includes(last_input)) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  return true;
+}
+
+function PerpareInput(input) {
+  let input_array = input.split("");
+
+  for (let i = 0; i < input_array.length; i++) {
+    if (input_array[i] == "%") {
+      input_array[i] = "/100";
+    }
+  }
+
+  return input_array.join("");
+}
