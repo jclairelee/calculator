@@ -1,5 +1,16 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 800px;
+  border-radius: 20px;
+  padding: 15rem 0;
+  background-color: #162920;
+}
 .calc {
   background-color: #e9edc9;
+  display: flex;
+  flex-direction: column;
   border-radius: 40px;
   width: 350px;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
